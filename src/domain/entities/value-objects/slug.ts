@@ -22,6 +22,7 @@ export class Slug {
             .replace(/_/g, '-')
             .replace(/--+/g, '-')
             .replace(/-$/g, '')
+            
 
         return new Slug(slugText)
     }
