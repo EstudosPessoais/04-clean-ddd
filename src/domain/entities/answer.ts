@@ -1,6 +1,6 @@
-import { Entity } from "../../core/entities/entity"
-import { UniqueEntityID } from "../../core/entities/unique-entity-id"
-import { Optional } from "../../core/types/optional"
+import { Entity } from "@/core/entities/entity"
+import { UniqueEntityID } from "@/core/entities/unique-entity-id"
+import { Optional } from "@/core/types/optional"
 
 interface AnswerProps {
     content: string, 
@@ -27,12 +27,12 @@ export class Answer extends Entity<AnswerProps> {
         return this.props.createdAt
     }
 
-    private touch() {
-        this.props.updatedAt = new Date()
-    }
-
     get updatedAt(){
         return this.props.updatedAt
+    }
+
+    private touch() {
+        this.props.updatedAt = new Date()
     }
 
     get except() {
