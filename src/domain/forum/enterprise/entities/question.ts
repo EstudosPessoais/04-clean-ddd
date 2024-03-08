@@ -15,12 +15,28 @@ export interface QuestionProps {
 }
 
 export class Question extends Entity<QuestionProps> {
+  static create(
+    props: Optional<QuestionProps, 'createdAt' | 'slug'>,
+    id?: UniqueEntityID,
+  ) {
+    const question = new Question(
+      {
+        ...props,
+        slug: props.slug ?? Slug.createFromText(props.title),
+        createdAt: new Date(),
+      },
+      id,
+    )
+
+    return question
+  }
+
   get title() {
     return this.props.title
   }
 
   get bestAnswerId() {
-    return this.props.bestAnswerId
+    return this.bestAnswerId
   }
 
   get content() {
@@ -69,21 +85,5 @@ export class Question extends Entity<QuestionProps> {
   set bestAnswerId(bestAnswerId: UniqueEntityID) {
     this.props.bestAnswerId = bestAnswerId
     this.touch()
-  }
-
-  static create(
-    props: Optional<QuestionProps, 'createdAt' | 'slug'>,
-    id?: UniqueEntityID,
-  ) {
-    const question = new Question(
-      {
-        ...props,
-        slug: props.slug ?? Slug.createFromText(props.title),
-        createdAt: new Date(),
-      },
-      id,
-    )
-
-    return question
   }
 }
