@@ -36,7 +36,7 @@ export class Question extends Entity<QuestionProps> {
   }
 
   get bestAnswerId() {
-    return this.bestAnswerId
+    return this.props.bestAnswerId
   }
 
   get content() {
