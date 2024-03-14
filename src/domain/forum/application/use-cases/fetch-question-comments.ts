@@ -1,5 +1,5 @@
 import { QuestionComment } from '../../enterprise/entities/question-comment'
-import { QuestionCommentRepository } from '../repositories/question-comments-repository'
+import { QuestionCommentsRepository } from '../repositories/question-comments-repository'
 
 interface FetchQuestionCommentsUseCaseCaseRequest {
   questionId: string
@@ -11,7 +11,7 @@ interface FetchQuestionCommentsUseCaseCaseResponse {
 }
 
 export class FetchQuestionCommentsUseCaseCase {
-  constructor(private questionCommentsRepository: QuestionCommentRepository) {}
+  constructor(private questionCommentsRepository: QuestionCommentsRepository) {}
 
   async execute({
     page,
