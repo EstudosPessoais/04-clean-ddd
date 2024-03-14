@@ -22,8 +22,6 @@ describe('Edit Question', () => {
       new UniqueEntityID('question-1'),
     )
 
-    console.log(newQuestion)
-
     await inMemoryQuestionsRepository.create(newQuestion)
 
     await sut.execute({
