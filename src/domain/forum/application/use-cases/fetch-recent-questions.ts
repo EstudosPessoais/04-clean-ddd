@@ -1,3 +1,4 @@
+import { Either, rigth } from '@/core/either'
 import { Question } from '../../enterprise/entities/question'
 import { QuestionsRepository } from '../repositories/questions-repository'
 
@@ -5,9 +6,12 @@ interface FetchRecentQuestionsCaseRequest {
   page: number
 }
 
-interface FetchRecentQuestionsCaseResponse {
-  questions: Question[]
-}
+type FetchRecentQuestionsCaseResponse = Either<
+  null,
+  {
+    questions: Question[]
+  }
+>
 
 export class FetchRecentQuestionsCase {
   constructor(private questionRepository: QuestionsRepository) {}
@@ -19,8 +23,8 @@ export class FetchRecentQuestionsCase {
       page,
     })
 
-    return {
+    return rigth({
       questions,
-    }
+    })
   }
 }
