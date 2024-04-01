@@ -17,7 +17,7 @@ export class DomainEvents {
   }
 
   private static dispatchAggregateEvents(aggregate: AggregateRoot<any>) {
-    aggregate.domainEvents.forEach((event: DomainEvent) => this.dispatch(event))
+    aggregate.domainEvent.forEach((event: DomainEvent) => this.dispatch(event))
   }
 
   private static removeAggregateFromMarkedDispatchList(
